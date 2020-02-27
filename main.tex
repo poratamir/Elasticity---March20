@@ -83,6 +83,19 @@ This paper describes how to combine our formalism of active reorientations of gr
     \caption{\textbf{Integration scheme}. Strating from a straight rod, growth is implemented by updating the rest lengths and rest curvature vectors of the Cosserat rod according to the active growth model. One can think of rest lengths and curvatures as describing a referential stress-free virtual rod, as described in Goriely's book. Then, the Cosserat rod relaxes into its new stable mechanical state using Elatsica. The active growth step and passive mechnanical relaxation is iterated, and only the final relaxed configurations are collected.} \label{fig:fig1}
 \end{figure}
 
+Practically, we start from a straight rod clamped on one side, and let it grow.Growth is implemented by updating the rest lengths and rest curvature vectors of the Cosserat rod according to the active growth model. One can think of rest lengths and curvatures as describing a referential stress-free virtual rod, as described in Goriely's book. Then, the Cosserat rod relaxes into its new stable mechanical state using Elatsica. The active growth step and passive mechnanical relaxation is iterated, and only the relaxed configurations of each growth step are collected.\\
+To execute this integration scheme, new basic function must be introducted to the Cosserat rod class in Elastica:
+\begin{itemize}
+    \item \underline{Set growth parameters}: Defines the growth profile of the organ, including its growth zone and groath rate profile. Should be defined once before integration.
+    \item \underline{Define tropisms}: Defines the active mechanisms that govern the dynamics of the rest curvture, based on our tropism model. Should be defined once before integration.
+    \item \underline{Update growth}: Preforms a growth timestep: Updates the rest lengths and rest curvatures according to the given active growth mechanisms.
+    \begin{itemize}
+        \item \underline{Divide elements:} If an element grew above a given rest length threshold it is divided into two "daughter" elements. 
+    \end{itemize}
+   
+\end{itemize} 
+We now go over each function in detail. 
+
 \subsection*{Update growth}
 The basic principle is to decompose the total stretch in the organ into growth stretch ($e_g$) and an elastic stretch ($e_e$):
 \begin{equation}
