@@ -74,15 +74,11 @@
 
 \begin{document}
 \section*{Implementation of elasticity in sensory-growth rod-like organs}
-\subsection*{Introduction}
-This paper describes how to combine our formalism of active reorientations of growing rods with M. Gazzola's Cosserat filament integrator (see \emph{Gazzola RSOS 2018}). To do so, we separate growth and elasticity, following the mathematical formalism presented in A. Goriely's book (\emph{The Mathematics and Mechanics of Biological Growth, Springer 2017}). The mathematical decomposition of growth and elastisity originates from a distinct separation of timescales: the timescale of growth processes in plants is in the order of $10^4$ seconds, while their elastic relaxation times are of the order of $1-0.01$ seconds. We can therefore assume that the dynamics of a growing plant are in the quasi-static regime, in which the organ reaches its mechanical steady state for every growth step.
+\subsection*{Intorduction}
+This paper describes how to combine our formalism of active reorientations of growing rods with M. Gazzola's Cosserat filament integrator (see \emph{Gazzola RSOS 2018}). To do so, we follow the mathematical formalism presented in A. Goriely's book (\emph{The Mathematics and Mechanics of Biological Growth, Springer 2017}). The main idea is to separate growth from elasticity. This originates from a distinct separation of timescales: the timescale of growth processes in plants is in the order of $10^4$ seconds, while their elastic relaxation times are of the order of $1-0.01$ seconds. We can therefore assume that the dynamics of a growing plant are in the quasi-static regime, in which the organ has reaches the steady state for every step of growth. 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.80\textwidth]{growth_concept.png}
-    \caption{\textbf{Integration scheme}. Strating from a straight rod, growth is implemented by updating the rest lengths and rest curvature vectors of the Cosserat rod according to the active growth model. One can think of rest lengths and curvatures as describing a referential stress-free virtual rod, as described in Goriely's book. Then, the Cosserat rod relaxes into its new stable mechanical state using Elatsica. The active growth step and passive mechnanical relaxation is iterated, and only the final relaxed configurations are collected.} \label{fig:fig1}
-\end{figure}
 
+One can thus choose to implement growth either by growing the plant in time-steps which are dictated by the elastic relaxation process (that is, growth takes place when the energy minimizes to a certain minimal threshold), or continuously growing the organ at a very slow rate. 
 \subsection*{Update growth}
 The basic principle is to decompose the total stretch in the organ into growth stretch ($e_g$) and an elastic stretch ($e_e$):
 \begin{equation}
