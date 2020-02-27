@@ -128,7 +128,6 @@ In a growing rod, if an element (or an edge) grows above a certain threshold, we
     \boldsymbol{\ell}_i=\boldsymbol{\ell}_{i,1}+\boldsymbol{\ell}_{i,2}
 \end{equation}
 
-\\
 
 \begin{figure}[h!]
     \centering
@@ -241,8 +240,8 @@ Then, the rest curvatures of the new segments are known, and the local coordinat
     \boldsymbol{Q}_{i,1}=\exp\left(-\frac{1}{2}(\frac{1}{2}\hat{\ell}_{i}+\hat{\ell}_{i-1})\hat{\boldsymbol{\kappa}}^{i-1}_\mathcal{L}\right)\boldsymbol{Q}_{i-1}\;\;,\;\;\boldsymbol{Q}_{i,2}=\exp\left(-\frac{1}{2}\hat{\ell}_i\hat{\boldsymbol{\kappa}}^{i,1}_\mathcal{L}\right)\boldsymbol{Q}_{i,1}
 \end{equation}
 
-\\
-\noindent Special attention should be given to the last element: Since the last node doesn't have a corresponding curvature, only the curvature of the new node is missing.  The continuity in $\boldsymbol{r}$ gives us the required $\hat{\boldsymbol{\kappa}}^{i,1}_\mathcal{L}$, as expressed in Eq.~\ref{eq:kappa1}. \\
+
+\noindent Special attention should be given to the last element: Since the last node doesn't have a corresponding curvature, only the curvature of the new node is missing.  The continuity in $\boldsymbol{r}$ gives us the required $\hat{\boldsymbol{\kappa}}^{i,1}_\mathcal{L}$, as expressed in Eq.~\ref{eq:kappa1}. 
 
 \noindent \textcolor{blue}{This derivation is true for the real curvature. A parallel calculation must be done for the virtual rod, where the propagation in arc length of the local coordinate frame is done with the intrinsic (rest) curvature rather than the real one.}
 
@@ -269,10 +268,10 @@ To insert aging effects, one must give a time dependence to both the bending mod
 \subsection*{Growth model - intrinsic curvature and actual curvature}
 By definition, active growth processes affect the shape of the organ by changing its intrinsic curvature and torsion. Then, an elastic relaxation of the form of the organ will give its actual form. However, signals' directions should be related to the actual form of the organ, as the organs' sensors are assumed to respond to the local stimuli (neglecting memory phenomena). If we mark the intrinsic curvature by $\kappa_0$, the actual curvature by $\kappa$, and the intrinsic torsion as $\tau_0=\partial \phi_0/\partial s$, our growth dynamics can be written as:\\
 \begin{equation}\label{eq:prop}
-        \frac{1}{\dot{E}}\frac{D(R\kappa_0)}{Dt}&=\vec{\Delta}\cdot\hat{N}=\vec{\lambda}\cdot\hat{N}-\gamma \kappa_0
+        \frac{1}{\dot{E}}\frac{D(R\kappa_0)}{Dt}=\vec{\Delta}\cdot\hat{N}=\vec{\lambda}\cdot\hat{N}-\gamma \kappa_0
 \end{equation}
 \begin{equation}
-    \frac{\kappa_0}{\dot{E}} \frac{D(R\phi_0)}{Dt}&=\vec{\Delta}\cdot\hat{B}=\vec{\lambda}\cdot\hat{B}
+    \frac{\kappa_0}{\dot{E}} \frac{D(R\phi_0)}{Dt}=\vec{\Delta}\cdot\hat{B}=\vec{\lambda}\cdot\hat{B}
 \end{equation}
 where $\vec{\lambda}$ is the local sensitivity vector, parallel to the direction of a certain stimulus, and $\gamma$ is the proprioception coefficient. In contrast, in Chelakkot2017 a simpler formalism was assumed for the curvature's dynamics (as they delt only with 2-d organs):
 \begin{equation}\label{eq:prop2}
