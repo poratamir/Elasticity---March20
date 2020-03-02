@@ -162,21 +162,33 @@ The default internal processes are:
 \end{itemize}
 
 \subsection*{Update growth}
-The basic principle is to decompose the total stretch in the organ into growth stretch ($e_g$) and an elastic stretch ($e_e$):
+As mentioned in the introduction, we decompose the total stretch in the organ into growth stretch ($e_g$) and an elastic stretch ($e_e$):
 \begin{equation}
     e=e_e\cdot e_g
 \end{equation}
-Referring to the re-scaling of segment properties in Gazzola's 2018 paper, the growth stretch $e_g$ does not change the area or curvature of the segment, and adds mass to the segment. Therefore, the following relations hold:
+In Gazzola's 2018 paper, an elastic filament (or rod) is modeled by a chain of $n+1$ discretized masses located on vertices. The full state of the filament is described using variables located on the vertices ($i\in(1,..,n+1)$), variables of the elements between them ($i\in(1,..,n)$), and variable located only on the interior vertices ($i\in(1,..,n-1)$), which are the average of the integrated values over Voronoi domains.
+\\
+In addition, there is a distinction between rest properties of the filament, which are unefected from elatsic streches, and its actual properties. Rest properties are marked by a hat ($\hat{x}$). Elastic stretches and growth streches have different effects on the actual state of the filament: For example, the elastic stretch changes the radius and curvature, while the growth stretch doesn't, and the growth stretch varies the mass, which the elastic stretch leaves unchanged.\\ Knowing the growth rate profile $\dot{e}_{g,i}$, we can integrate rest properties of the rod (or properties of the virtual rod) with respect to the growth time step. Since the growth rate is defined on elements, the time evolution of element variables is rather straightforward:
+\begin{itemize}
+    \item \underline{Rest lengths:}
+    \begin{equation}
+        \dot{\hat{l}}_i=\dot{e}_{g,i}\hat{l}_i
+    \end{equation}
+\end{itemize}
+Variables on the vertices are updated by splitting elemtal properties between vertices:
+\begin{itemize}
+    \item \underline{mass:}
+    \begin{equation}
+        \dot{m}_i=
+    \end{equation}
+\end{itemize}
+
 \begin{equation}
     ds=e\cdot d\hat{s}=e_e\cdot e_gd\hat{s}\;,\;
     R=\frac{\hat{R}}{\sqrt{e_e}}\;,\;
-    A=\frac{\hat{A}}{e_e}\;,\;
-    I=\frac{\hat{I}}{e_e^2}\;,\;
-    B=\frac{\hat{B}}{e_e^2}\;,\;
-    S=\frac{\hat{S}}{e_e}\;,\;
-    \kappa_{\mathcal{L}}=\frac{\hat{\boldsymbol{\kappa}}_{\mathcal{L}}}{e_e}
+    \boldsymbol{\kappa}_{\mathcal{L}}=\frac{\hat{\boldsymbol{\kappa}}_{\mathcal{L}}}{e_e}
 \end{equation}
-The mass of the segment will be:
+The mass of an element is:
 \begin{equation}
     dm=\rho \pi R^2 ds=e_g\rho\pi\hat{R}^2 d\hat{s}
 \end{equation}
